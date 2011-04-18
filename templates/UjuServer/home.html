@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block ext_js %}
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#gw_info").accordion();
+    $("#live_feed").accordion();
+    $("#app_tabs").tabs();
+    $('#AppTable').dataTable({
+        "bJQueryUI": true,
+        "bPaginate": true,
+        "bSort": true,
+        "bAutoWidth": true,
+    });
+
+});
+</script>
+{% endblock%}
+{% block content %}
+<table id="live_update" width="960" border="0" cellpadding="0" cellspacing="0" style="margin-top:20px;" class="ui-corner-all">
+    <td align="left">
+        <div id="gw_info" style="width:340px;">
+            <h3><a href="">Gateway Status</a></h3>
+            <div><p>Gateway Information comes here</p></div>
+        </div>
+    </td>
+    <td align="left">
+        <div id="live_feed" style="width:605px;">
+            <h3><a href="">Incoming Message</a></h3>
+            <div><p>A live update for incoming message</p></div>
+        </div>
+    </td>
+</table>
+<hr/>
+<div id="app_tabs">
+    <ul>
+        <li><a href="#app_one">App One</a></li>
+    </ul>
+    <div id="app_one">
+        <table id="AppTable" class="display">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Other fields</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Application Name</td>
+                    <td>field's value</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock%}
