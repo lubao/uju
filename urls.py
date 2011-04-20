@@ -5,6 +5,13 @@ import settings
 from django.contrib import admin
 admin.autodiscover()
 
+from django.contrib import databrowse
+from Gammu.models import Inbox, Outbox, SentItems
+
+databrowse.site.register(Inbox)
+databrowse.site.register(Outbox)
+databrowse.site.register(SentItems)
+
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'Uju.views.home', name='home'),
@@ -16,6 +23,8 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
+
+    url(r'^gammu/(.*)', databrowse.site.root),
 )
 
 

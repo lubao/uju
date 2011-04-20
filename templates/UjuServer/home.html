@@ -5,7 +5,7 @@ $(document).ready(function(){
     $("#gw_info").accordion();
     $("#live_feed").accordion();
     $("#app_tabs").tabs();
-    $('#AppTable').dataTable({
+    $('.my_table').dataTable({
         "bJQueryUI": true,
         "bPaginate": true,
         "bSort": true,
@@ -16,6 +16,7 @@ $(document).ready(function(){
 </script>
 {% endblock%}
 {% block content %}
+{% comment %}
 <table id="live_update" width="960" border="0" cellpadding="0" cellspacing="0" style="margin-top:20px;" class="ui-corner-all">
     <td align="left">
         <div id="gw_info" style="width:340px;">
@@ -30,13 +31,66 @@ $(document).ready(function(){
         </div>
     </td>
 </table>
+{% endcomment %}
 <hr/>
 <div id="app_tabs">
     <ul>
+        <li><a href="#sent_items">Sent Message</a></li>
+        <li><a href="#inbox">Received Message</a></li>
         <li><a href="#app_one">App One</a></li>
     </ul>
+
+    <div id="sent_items">
+        <table id="sent_table" class="my_table  display">
+            <thead>
+                <tr>
+                    <th>Destionation Number</th>
+                    <th>Message</th>
+                    <th>UDH</th>
+                    <th>Sending Time</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="sent_item">
+                {% if sent_items %}{% for item in sent_items%}
+                <tr>
+                    <td>{{ item.destination_number}}</td>
+                    <td>{{ item.text_decoded }}</td>
+                    <td>{{ item.udh }}</td>
+                    <td>{{ item.sending_datetime }}</td>
+                    <td>{{ item.status }}</td>
+                </tr>
+                {% endfor %}{% endif %}
+            </tbody>
+        </table>
+    </div>
+
+    <div id="inbox">
+        <table id="inbox_table" class="my_table display">
+            <thead>
+                <tr>
+                    <th>Sender Number</th>
+                    <th>Message</th>
+                    <th>UDH</th>
+                    <th>Receiving Time</th>
+                    <th>Update Time</th>
+                </tr>
+            </thead>
+            <tbody id="inbox">
+                {% if inbox %}{% for item in inbox%}
+                <tr>
+                    <td>{{ item.sender_number}}</td>
+                    <td>{{ item.text_decoded }}</td>
+                    <td>{{ item.udh }}</td>
+                    <td>{{ item.receiving_datetime }}</td>
+                    <td>{{ item.update_in_db }}</td>
+                </tr>
+                {% endfor %}{% endif %}
+            </tbody>
+        </table>
+    </div>
     <div id="app_one">
-        <table id="AppTable" class="display">
+        <table id="AppTable" class="my_table display">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -44,10 +98,6 @@ $(document).ready(function(){
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Application Name</td>
-                    <td>field's value</td>
-                </tr>
             </tbody>
         </table>
     </div>

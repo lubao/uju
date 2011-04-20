@@ -19,9 +19,18 @@ DATABASES = {
         'PASSWORD': 'uju',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+    },
+
+    'gammu': {
+        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'gammu_smsd',                      # Or path to database file if using sqlite3.
+        'USER': 'uju',                      # Not used with sqlite3.
+        'PASSWORD': 'uju',                  # Not used with sqlite3.
+        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
-
+DATABASE_ROUTERS = ['Gammu.router.GammuRouter']
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
@@ -123,7 +132,9 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
+    'django.contrib.databrowse',
 )
+
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
