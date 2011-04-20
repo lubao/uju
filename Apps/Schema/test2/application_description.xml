@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<application id="12" type="0" name="test2">
+ <schemas total="1">
+  <schema id="1" name="a schema">
+   <fields total="1" primary_field_id="0">
+     <field id="0" name="a field" range="0"/>
+   </fields>
+  </schema> 
+ </schemas>
+</application>

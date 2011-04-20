@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<application id="{{ appId }}" type="0" name="{{ appName }}">
+ <schemas total="{{ numOfSchemas }}">{% for schema in  schemas  %}
+  <schema id="{{ schema.schemaId }}" name="{{ schema.schemaName }}">
+   <fields total="{{ schema.numOfFields }}" primary_field_id="0">{% for field in schema.fields %}{% if field.fieldRange > -2 %}
+     <field id="{{ field.fieldId }}" name="{{ field.fieldName }}" range="{{ field.fieldRange }}"/>{% else %}
+     <field id="{{ field.fieldId }}" name="{{ field.fieldName }}" range="{{ field.fieldRange }}">
+      <choices total="{{ field.numOfChoices}}">{% for choice in field.choices%}
+       <choice name="{{ choice }}"/> {% endfor%}
+      </choices>
+     </field>{% endif %}{% endfor%}
+   </fields>
+  </schema> {% endfor %}
+ </schemas>
+</application>

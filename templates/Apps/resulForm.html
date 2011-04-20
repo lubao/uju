@@ -1,0 +1,33 @@
+{% extends "template/searchForm.html" %}
+<!DOCTYPE html>
+{% block result %}
+
+  <!--  <fieldset> -->
+  <!--  <legend>Query</legend> -->
+  <!--  <table> -->
+  <!--    <tr> -->
+  <!--      <td><b>Model</b></td><td> {{ model }}</td> -->
+  <!--    </tr> -->
+  <!--    <tr>  -->
+  <!--      <td><b>Start Year</b></td><td> {{ syear }} </td> -->
+  <!--    </tr> -->
+  <!--    <tr> -->
+  <!--      <td><b>End Year</b></td><td> {{ eyear }}</td> -->
+  <!--    </tr> -->
+  <!--    <tr>  -->
+  <!--      <td><b>Start Price</b></td><td> {{ sprice }} </td> -->
+  <!--    </tr> -->
+  <!--    <tr>  -->
+  <!--      <td><b>End Price</b></td><td> {{ eprice }} </td> -->
+  <!--    </tr> -->
+     
+  <!--  </table> -->
+  <!-- </fieldset> -->
+
+   {% for i in return %}
+   <fieldset>
+   <legend>Result</legend>
+   <p> {{ i }} </p>
+  </fieldset>
+  {% endfor %}
+{% endblock %}

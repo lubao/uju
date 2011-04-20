@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<!--html>
+    <head>
+        <title></title>
+        <link rel="Stylesheet" href="http://yui.yahooapis.com/3.0.0/build/cssreset/reset-min.css">
+        <style>
+            body {font-family : Tahoma;  margin : 20px; cursor : default;}
+            input { border : 1px solid #aaa;}
+            p { margin : 10px 0;}
+            span { text-decoration : underline; font-family : cursive;}
+            span : hover { background-color : #ff0 ; cursor : pointer; }
+            fieldset { border : solid 2px #2244BB; margin : 15px; position : relative; padding : 10px}
+            legend {font-family : Lucida Console}
+            
+            .remove { color : red; }
+            .remove_field { color : #EEBBAA; }
+            .add { color : green; }
+            .add_field { color : #1122AA; }
+            .add_choice { color : #337711; }
+        </style>
+    </head>
+
+    <body-->
+{% block ext_css %}
+<style>
+span { text-decoration : underline }
+span:hover { background-color : #ff0 ; cursor : pointer }
+fieldset { border : solid 2px #2244BB; margin : 15px; position : relative; padding : 10px}
+legend {font-family : Lucida Console}
+p { margin : 10px 0;}
+.remove { color : red; }
+.remove_field { color : #EEBBAA; }
+.add { color : green; }
+.add_field { color : #1122AA; }
+.add_choice { color : #337711; }
+</style>
+{% endblock %}
+{% block ext_js %}
+<script type="text/javascript">
+function add_progress(){
+    var _value = $("#waiting_progressbar").progressbar("option","value");
+    _value += 10;
+    if (_value > 100){_value=0;}
+    $("#waiting_progressbar").progressbar("option","value",_value);
+}
+
+function ajax_gen_app(){
+    setInterval(add_progress, 250);
+    $("#waiting_dialog").dialog("open");
+    $.post(
+        '/uju/apps/ajax_gen_app/',
+        $('#app').serialize(),
+        function(res){
+            clearInterval(add_progress);
+            $("#waiting_dialog").dialog("close");
+            $("#result_dialog").html(
+            "<p>"+res['result']+"</p>"
+            );
+            $("#result_dialog").dialog("open");
+        },
+        'json'
+    );
+}
+$(document).ready(function(){
+    $("a:button").button();
+    $("#waiting_dialog").dialog({
+        autoOpen:false,
+    });
+    $("#result_dialog").dialog({
+        autoOpen:false,
+    });
+    $("#waiting_progressbar").progressbar({
+        value:0
+    });
+
+    $(".add").click(function(){
+            $(this).parent().clone(true).insertAfter($(this).parent());
+            return false;
+        }
+    );
+    $(".add_field").click(function(){
+            $(this).parent().clone(true).insertAfter($(this).parent());
+            return false;
+        }
+    );
+    $(".remove").click(function(){
+            var row = $(this).parent();
+            row.fadeOut('normal',function(){row.remove();});
+        }
+    );
+    $("#app").validate();
+    //$(".remove_field").click(function(){
+            //var row = $(this).parent();
+            //row.fadeOut('normal',function(){row.remove();});
+    //    }
+    //);
+    $('.selType').live('change',insertTypeAttr);
+    //$('.add_field').bind('click',addField) 
+    $('.remove_field').live('click',removeField) 
+    $('.add_choice').live('click',addChoice);
+    $('.remove_choice').live('click',removeChoice);
+});
+function addField(e){
+  $('<div><div>Name : <input type="text" name="fieldName"> Type : <select class="selType" name="fieldType"><option>String</option><option>Date Time</option><option>Integer</option><option>Single Choice</option><option>Multiple Choice</option></select></div><span id="add_fields" class="add_field">Add Field</span>    <span id="remove_fields" class="remove_field">Remove Field</span></div>').insertAfter($(this).parent());
+//  $('.add_field').bind('click',addField) 
+//  $('.remove_field').bind('click',removeField) 
+};
+function showMsg(){
+    alert("hello");
+};
+function addChoice(e){
+    $(this).parent().clone(true).insertAfter($(this).parent());
+};
+function removeChoice(e){
+    $(this).parent().remove();
+};
+function removeField(e){
+    $(this).parent().remove();
+};
+function insertTypeAttr(e){
+    var sel = $(e.target).attr("value");
+    var row = $(this).next();
+    row.fadeOut('normal',function(){row.remove();});
+    if (sel == "Integer"){
+       $('<div> Range : <input type="text" name="fieldRange"> </div>').insertAfter($(this));
+    }
+    if (sel == "Single Choice" || sel == "Multiple Choice"){
+       $('<div><div id="choices"> Choices : <input type="text" name="choiceName"> <span class="add_choice">Add Choice</span> <span class="remove_choice">Remove Choice</div></div>').insertAfter($(this));
+       //$('.add_choice').bind('click',addChoice);
+       //$('.remove_choice').bind('click',removeChoice);
+    }
+};
+</script>
+{% endblock %}
+{% block content %}
+<div id="waiting_dialog" title="Waiting for response...">
+    <div id="waiting_progressbar"></div>
+</div>
+<div id="result_dialog" title="Result">
+</div>
+
+<form id="app" method="post"> {% csrf_token %}
+    <fieldset id="app_info">
+        <legend> Application</legend>
+          <div ><label>ID:</label> <input type="text" name="appId" class="required"></div>
+          <div ><label>Name :</label><input type="text" name="appName"></div>
+    <fieldset id="schema">
+        <legend>Schema</legend>
+                Name : <input type="text" name="schemaName">
+        <fieldset id="fields">
+            <legend>Fields</legend>
+                <div>
+                    <div>
+                    Name : <input type="text" name="fieldName">
+                    Type : <select class="selType" name="fieldType">
+                                            <option>String</option>
+                                            <option>Date Time</option>
+                                            <option>Integer</option>
+                                            <option>Single Choice</option>
+                                            <option>Multiple Choice</option>
+                                        </select>
+                    </div>
+                    <span id="add_fields" class="add_field">Add Field</span>
+                    <span id="remove_fields" class="remove_field">Remove Field</span>
+                </div>
+        </fieldset>
+        <!--span id="add_schema" class="add" align="right">Add Schema</span></p>
+        <span id="remove_schema" class="remove">Remove Schema</span-->
+    </fieldset>
+    </fieldset>
+    <!--input type="submit" value="Create My App!"-->
+    <a type="button" onClick="ajax_gen_app();">Create My App</a>
+</form>
+{% endblock %}
+    <!--/body>
+</html-->

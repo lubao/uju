@@ -17,7 +17,7 @@ urlpatterns = patterns('',
     url(r'^$', 'Uju.views.home', name='home'),
     # url(r'^uju/', include('uju.foo.urls')),
     url(r'^uju/server/', include('uju.UjuServer.urls')),
-
+    url(r'^uju/apps/', include('uju.Apps.urls')),
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 

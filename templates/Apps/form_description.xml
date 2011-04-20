@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<form id="{{ formId }}" application="{{ appId }}" type="{{ opId }}" name="{{ formName }}">
+ <table>
+  <schemas total="1">{% for schema in  schemas  %}
+   <schema id="{{ schema.schemaId }}"> 
+    <fields total="{{ schema.numOfFields }}" {% if schema.logical %} logical="AND" {% endif %}>{% for field in schema.fields %}
+     <field id="{{ field.fieldId }}"{% if field.operator %} operator="{{ field.operator }}"{% endif %}/>{% endfor %}
+    </fields>{% if schema.fetch %}
+    <fetch total="{{ schema.numOfFetch}}">{% for field in schema.fetch %}
+     <field id="{{ field }}"/>{% endfor %}
+    </fetch>{% endif %}
+   </schema> {% endfor %}
+  </schemas>
+ </table>
+</form>

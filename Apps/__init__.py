@@ -191,7 +191,10 @@ for app in apps_directory:
     )
     app_dict = schema_reader.get_app_dict()
     for schema in app_dict[u'schemas'].itervalues():
-        databrowse.site.register(
-            create_table(app_name=app_dict[u'name'], schema_dict=schema)
-        )
+    	try:
+            databrowse.site.register(
+                create_table(app_name=app_dict[u'name'], schema_dict=schema)
+            )
+        except:
+            pass
 

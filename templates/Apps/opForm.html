@@ -1,0 +1,90 @@
+{% extends "template/base.html" %}
+<!--DOCTYPE html>
+<html>
+ <head>
+  <title></title>
+  <link rel="Stylesheet" href="http://yui.yahooapis.com/3.0.0/build/cssreset/reset-min.css">
+  <style>
+   div {float:center ; position:relative;}
+   body {font-family : Tahoma;  margin : 20px; cursor : default;}
+   input { border : 1px solid #aaa;}
+   p { margin : 10px 0;}
+   span { text-decoration : underline; font-family : cursive;}
+   span : hover { background-color : #ff0 ; cursor : pointer; }
+   fieldset { border : solid 2px #2244BB; margin : 15px; position : relative; padding : 10px}
+   legend {font-family : Lucida Console}
+   .remove { color : red; }
+   .remove_field { color : #EEBBAA; }
+   .add { color : green; }
+   .add_field { color : #1122AA; }
+   .add_choice { color : #337711; }
+  </style>
+ </head>
+ <body-->
+{% block extStyle%}
+   .remove { color : red }
+   .remove_field { color : #EEBBAA }
+   .add { color : green }
+   .add_field { color : #1122AA }
+   .add_choice { color : #337711 }
+   span { text-decoration : underline }
+   span:hover { background-color : #ff0 ; cursor : pointer }
+   fieldset { border : solid 2px #2244BB; margin : 15px; position : relative; padding : 10px}
+   legend {font-family : Lucida Console}
+{% endblock %}
+
+{% block content %}
+   <form id="op" action ="../genOpForm/" method="POST"> {% csrf_token %}
+     <fieldset "form_info">
+      <legend>Form</legend>
+       <div class="span-4">Appication ID : <input type="text" name="appId"></div>
+       <div class="span-4">Form ID : <input type="text" name="formId"></div>
+       <div class="span-4">Form Name : <input type="text" name="formName"></div>
+       <div class="span-4">Schema ID : <input type="text" name="formName"></div>
+       <hr/>
+       <div>Operation : <select class="selOperation" name="formOperation">
+              <option>Create</option>
+              <option>Update</option>
+              <option>Fetch</option>
+              <option>Destroy</option>
+              <option>Count</option>
+             </select></div>
+     </fieldset>
+    <input type="submit" value="SUBMIT">
+   </form>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+  <script type="text/javascript">
+   $(document).ready(function(){
+    $('.selOperation').bind('change',insertOpFieldset);
+    }
+   );
+   function showMsg(){
+    alert("hello");
+   };
+   function addChoice(e){
+    $(this).parent().clone(true).insertAfter($(this).parent());
+   };
+   function removeChoice(e){
+    $(this).parent().remove();
+   };
+   function insertOpFieldset(e){
+    var sel = $(e.target).attr("value");
+    var row = $(this).next();
+    row.fadeOut('normal',function(){row.remove();});
+    if (sel != "Fetch" && sel != "Count"){
+       $('<fieldset><legend>Fields</legend> <div>ID : <input type="text" name="fieldId"><span class="add_choice">Add Field</span>    <span class="remove_choice">Remove Field</span></div></fieldset>').insertAfter($(this));
+    }
+    if ( sel == "Count"){
+     $('<fieldset><legend>Count Condition</legend> <div>ID : <input type="text" name="fieldId"> Logic : <select name="fetchLogic"><option>Greater Than</option><option>Equal to</option><option>Less than</option></select>   <span class="add_choice">Add Field</span>    <span class="remove_choice">Remove Field</span></div></fieldset>').insertAfter($(this));
+    
+    }
+    if ( sel == "Fetch") {
+       $('<fieldset><fieldset><legend>Fectch Condition</legend> <div>ID : <input type="text" name="fieldId"> Logic : <select name="fetchLogic"><option>Greater Than</option><option>Equal to</option><option>Less than</option></select>   <span class="add_choice">Add Field</span>    <span class="remove_choice">Remove Field</span></div></fieldset><fieldset><legend>Fetch Fields</legend><div><div id="choices"> Field ID : <input type="text" name="fetchFieldId"> <span class="add_choice">Add Fields</span> <span class="remove_choice">Remove Fields</div></div></fieldset></fieldset>').insertAfter($(this));
+    }
+    $('.add_choice').bind('click',addChoice);
+    $('.remove_choice').bind('click',removeChoice);
+   };
+  </script>
+{% endblock %}
+ <!--/body>
+</html-->
