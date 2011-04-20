@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<form id="20" application="0" operation="0" name="Create Group">
+    <table>
+        <schemas total="1">
+            <schema id="5">
+				<fields total="5">
+                		<field id="0"/>
+                    	<field id="1"/>
+                    	<field id="2"/>
+                    	<field id="3"/>
+                    	<field id="4"/>
+                </fields>
+			</schema>
+        </schemas>
+    </table>
+</form>

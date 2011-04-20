@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<form id="4" application="0" operation="1" name="Apply CAME Credit">
+    <table>
+        <schemas total="1">
+            <schema id="0">
+				<fields total="4">
+                		<field id="0"/>
+                    	<field id="1"/>
+                    	<field id="2"/>
+                    	<field id="17"/>
+                </fields>
+			</schema>
+        </schemas>
+    </table>
+</form>

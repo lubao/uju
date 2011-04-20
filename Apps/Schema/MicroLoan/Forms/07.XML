@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<form id="7" application="0" operation="3" name="Get Passcode">
+    <table>
+        <schemas total="1">
+            <schema id="2">
+            	<fields total="2" logical="AND" >
+                		<field id="0" operator="Equal to"/>
+                		<field id="1" operator="Equal to"/>
+                </fields>
+				<fetch total="2">
+                		<field id="0"/>
+                    	<field id="1"/>
+                </fetch>
+			</schema>
+        </schemas>
+    </table>
+</form>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<form id="5" application="0" operation="3" name="Get CAME Credit">
+    <table>
+        <schemas total="1">
+            <schema id="0">
+            	<fields total="1" logical="AND" >
+                		<field id="1" operator="Equal to"/>
+                </fields>
+				<fetch total="2">
+                		<field id="0"/>
+                    	<field id="16"/>
+                </fetch>
+			</schema>
+        </schemas>
+    </table>
+</form>

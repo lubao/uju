@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<form id="2" application="0" operation="5" name="Receive Saving,CAME,Interciclo">
+    <table>
+        <schemas total="1">
+            <schema id="4">
+				<fields total="7">
+                		<field id="0"/>
+                    	<field id="1"/>
+                    	<field id="2"/>
+                    	<field id="3"/>
+                    	<field id="4"/>
+                    	<field id="5"/>
+                    	<field id="6"/>
+                </fields>
+			</schema>
+        </schemas>
+    </table>
+</form>

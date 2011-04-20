@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<form id="21" application="0" operation="1" name="Update Group Fine">
+    <table>
+        <schemas total="1">
+            <schema id="5">
+				<fields total="2">
+                		<field id="0"/>
+                    	<field id="3"/>
+                </fields>
+			</schema>
+        </schemas>
+    </table>
+</form>

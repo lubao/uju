@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<form id="6" application="0" operation="3" name="Get Profits">
+    <table>
+        <schemas total="1">
+            <schema id="1">
+            	<fields total="1" logical="AND" >
+                		<field id="1" operator="Equal to"/>
+                </fields>
+				<fetch total="3">
+                		<field id="0"/>
+                    	<field id="1"/>
+                    	<field id="2"/>
+                </fetch>
+			</schema>
+        </schemas>
+    </table>
+</form>

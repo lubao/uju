@@ -1,0 +1,6 @@
+schema id="0" name="Client"
+schema id="1" name="Profits"
+schema id="2" name="User"
+schema id="3" name="Close"
+schema id="4" name="Payment"
+schema id="5" name="Group"

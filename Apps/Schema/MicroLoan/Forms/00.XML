@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<form id="0" application="0" operation="3" name="Load Client Info from Server">
+    <table>
+        <schemas total="1">
+            <schema id="0">
+                <fields total="1" logical="AND" >
+                		<field id="1" operator="Equal to"/>
+                </fields>
+                <fetch total="6">
+                    	<field id="0"/>
+                    	<field id="1"/>
+                    	<field id="3"/>
+                    	<field id="5"/>
+                    	<field id="15"/>
+                    	<field id="16"/>
+                </fetch>
+            </schema>
+        </schemas>
+    </table>
+</form>

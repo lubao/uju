@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<application id="0" type="0" name="CAME">
+    <schemas total="6">
+		<schema id="0" name="Client">
+        	<fields total="19" primary_field_id="0">
+        		<field id="0" name="Client ID" range="24"/>
+        		<field id="1" name="Group ID" range="16"/>
+        		<field id="2" name="Week Number" range="5"/>
+        		<field id="3" name="Saving" range="24"/>
+        		<field id="4" name="Saving Penalty" range="5"/>
+        		<field id="5" name="CAME Capital" range="18"/>
+        		<field id="6" name="CAME Account" range="18"/>
+        		<field id="7" name="CAME Penalty" range="5"/>
+        		<field id="8" name="CAME Default" range="18"/>
+        		<field id="9" name="Interciclo Capital" range="18"/>
+				<field id="10" name="Initial Week" range="5"/>
+				<field id="11" name="Interciclo Account" range="18"/>
+        		<field id="12" name="Interciclo Penalty" range="5"/>
+        		<field id="13" name="Interciclo Default" range="18"/>
+        		<field id="14" name="Missing" range="5"/>
+        		<field id="15" name="Cycle" range="10"/>
+        		<field id="16" name="Group Rate" range="8"/>
+        		<field id="17" name="CAME Credit" range="18"/>
+        		<field id="18" name="Avg Saving" range="24"/>
+        	</fields>
+        </schema>
+        <schema id="1" name="Profits">
+        	<fields total="3" primary_field_id="0">
+        		<field id="0" name="Client ID" range="24"/>
+        		<field id="1" name="Group ID" range="16"/>
+        		<field id="2" name="Profits" range="24"/>
+        	</fields>
+        </schema>
+        <schema id="2" name="User">
+        	<fields total="2" primary_field_id="0">
+        		<field id="0" name="User ID" range="24"/>
+        		<field id="1" name="Passcode" range="16"/>
+        	</fields>
+        </schema>
+        <schema id="3" name="Close">
+        	<fields total="4" primary_field_id="0">
+        		<field id="0" name="Client ID" range="24"/>
+        		<field id="1" name="Group ID" range="16"/>
+        		<field id="2" name="Saving" range="24"/>
+        		<field id="3" name="CAME" range="18"/>
+        	</fields>
+        </schema>
+        <schema id="4" name="Payment">
+        	<fields total="7" primary_field_id="0">
+        		<field id="0" name="Client ID" range="24"/>
+        		<field id="1" name="Group ID" range="16"/>
+        		<field id="2" name="Week Number" range="5"/>
+        		<field id="3" name="Missing" range="5"/>
+        		<field id="4" name="Saving" range="18"/>
+        		<field id="5" name="CAME" range="18"/>
+        		<field id="6" name="Inter" range="18"/>
+        	</fields>
+        </schema>
+        <schema id="5" name="Group">
+        	<fields total="5" primary_field_id="0">
+        		<field id="0" name="Group ID" range="16"/>
+        		<field id="1" name="Last Week" range="5"/>
+        		<field id="2" name="Rate" range="8"/>
+        		<field id="3" name="Fine" range="3"/>
+        		<field id="4" name="Profit" range="24"/>
+        	</fields>
+        </schema>
+    </schemas>
+</application>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<form id="9" application="0" operation="0" name="Create Profits">
+    <table>
+        <schemas total="1">
+            <schema id="1">
+				<fields total="3">
+                		<field id="0"/>
+                    	<field id="1"/>
+                    	<field id="2"/>
+                </fields>
+			</schema>
+        </schemas>
+    </table>
+</form>
