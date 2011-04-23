@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Databrowse{% endblock %}
+{% block ext_js %}
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#radio").buttonset();
+});
+</script>
+
+{% endblock %}
+{% block content %}
+<div id="banner">
+    <div id="radio" style="padding-left : 650px;">
+        {% for model in model_list %}
+        <input type="radio" id="radio1" onClick="location.href='{% url MyUser.views.member %}'" name="Member"/>
+        <label for="radio1">Member</label>
+        {% endfor %}
+    </div>
+</div>
+<hr/>
+
+{% comment %}
+{% for model in model_list %}
+  <div class="modelgroup {% cycle 'even' 'odd' %}">
+	  <h2><a href="{{ model.url }}">{{ model.verbose_name_plural|capfirst }}</a></h2>
+		<p>
+		{% for object in model.sample_objects %}
+			<a href="{{ object.url }}">{{ object }}</a>, 
+		{% endfor %}
+			<a class="more" href="{{ model.url }}">More &rarr;</a>
+		</p>
+  </div>
+{% endfor %}
+{% endcomment %}
+
+{% endblock %}
